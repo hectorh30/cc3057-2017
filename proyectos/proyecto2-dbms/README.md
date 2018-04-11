@@ -16,6 +16,9 @@ o Python 3:
 * https://pypi.python.org/pypi/antlr4-python2-runtime/
 * https://pypi.python.org/pypi/antlr4-python3-runtime/
 
+Los archivos tests.sql y false-tests.sql contienen queries que son correcta e incorrectamente
+procesados por las clases generadas, a manera de validación.
+
 ## Referencias
 
 De acuerdo con [esto](https://tomassetti.me/parsing-in-python/#tools), los **visitors**
