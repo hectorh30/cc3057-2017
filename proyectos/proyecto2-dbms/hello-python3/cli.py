@@ -7,7 +7,7 @@ from antlr4.error.ErrorListener import ErrorListener
 
 class SayHelloListener(HelloListener):
     def exitR(self, ctx):
-        print "Hello world. At the input has been already validated"
+        print("Hello world. At the input has been already validated")
 
 class ParserException(Exception):
     def __init__(self, value):
@@ -49,23 +49,23 @@ ParserException.
 def main(argv):
     while True:
         try:
-            text = raw_input("> ")
+            text = input("> ")
 
             if (text == 'exit'):
                 sys.exit()
 
             parse(text);
-            print "Valid"
+            print("Valid")
 
         except ParserException as e:
-            print "Got a parser exception:", e.value
+            print("Got a parser exception:", e.value)
 
         except EOFError as e:
-            print "Bye"
+            print("Bye")
             sys.exit()
 
         except Exception as e:
-            print "Got exception: ", e
+            print("Got exception: ", e)
 
 if __name__ == '__main__':
     main(sys.argv)

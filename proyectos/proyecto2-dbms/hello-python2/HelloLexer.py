@@ -3,7 +3,6 @@
 from __future__ import print_function
 from antlr4 import *
 from io import StringIO
-from antlr4.error.ErrorListener import ErrorListener
 import sys
 
 def serializedATN():
@@ -21,16 +20,6 @@ def serializedATN():
         buf.write(u"\31\3\2\2\2\31\32\b\4\2\2\32\b\3\2\2\2\5\2\22\27\3\b")
         buf.write(u"\2\2")
         return buf.getvalue()
-
-class LexerException(Exception):
-    def __init__(self, value):
-        self.value = value
-    def __str__(self):
-        return repr(self.value)
-
-class LexerExceptionErrorListener(ErrorListener):
-    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-        raise LexerException("line " + str(line) + ":" + str(column) + " " + msg)
 
 class HelloLexer(Lexer):
     atn = ATNDeserializer().deserialize(serializedATN())
@@ -53,6 +42,3 @@ class HelloLexer(Lexer):
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None
-
-        self.removeErrorListeners()
-        self.addErrorListener(LexerExceptionErrorListener())
