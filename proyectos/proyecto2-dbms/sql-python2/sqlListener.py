@@ -130,12 +130,12 @@ class sqlListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by sqlParser#compound_select_stmt.
-    def enterCompound_select_stmt(self, ctx):
+    # Enter a parse tree produced by sqlParser#factored_select_stmt.
+    def enterFactored_select_stmt(self, ctx):
         pass
 
-    # Exit a parse tree produced by sqlParser#compound_select_stmt.
-    def exitCompound_select_stmt(self, ctx):
+    # Exit a parse tree produced by sqlParser#factored_select_stmt.
+    def exitFactored_select_stmt(self, ctx):
         pass
 
 
@@ -184,15 +184,6 @@ class sqlListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by sqlParser#factored_select_stmt.
-    def enterFactored_select_stmt(self, ctx):
-        pass
-
-    # Exit a parse tree produced by sqlParser#factored_select_stmt.
-    def exitFactored_select_stmt(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by sqlParser#insert_stmt.
     def enterInsert_stmt(self, ctx):
         pass
@@ -217,24 +208,6 @@ class sqlListener(ParseTreeListener):
 
     # Exit a parse tree produced by sqlParser#simple_select_stmt.
     def exitSimple_select_stmt(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by sqlParser#select_stmt.
-    def enterSelect_stmt(self, ctx):
-        pass
-
-    # Exit a parse tree produced by sqlParser#select_stmt.
-    def exitSelect_stmt(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by sqlParser#select_or_values.
-    def enterSelect_or_values(self, ctx):
-        pass
-
-    # Exit a parse tree produced by sqlParser#select_or_values.
-    def exitSelect_or_values(self, ctx):
         pass
 
 

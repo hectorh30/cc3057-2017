@@ -134,12 +134,12 @@ class sqlListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by sqlParser#compound_select_stmt.
-    def enterCompound_select_stmt(self, ctx:sqlParser.Compound_select_stmtContext):
+    # Enter a parse tree produced by sqlParser#factored_select_stmt.
+    def enterFactored_select_stmt(self, ctx:sqlParser.Factored_select_stmtContext):
         pass
 
-    # Exit a parse tree produced by sqlParser#compound_select_stmt.
-    def exitCompound_select_stmt(self, ctx:sqlParser.Compound_select_stmtContext):
+    # Exit a parse tree produced by sqlParser#factored_select_stmt.
+    def exitFactored_select_stmt(self, ctx:sqlParser.Factored_select_stmtContext):
         pass
 
 
@@ -188,15 +188,6 @@ class sqlListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by sqlParser#factored_select_stmt.
-    def enterFactored_select_stmt(self, ctx:sqlParser.Factored_select_stmtContext):
-        pass
-
-    # Exit a parse tree produced by sqlParser#factored_select_stmt.
-    def exitFactored_select_stmt(self, ctx:sqlParser.Factored_select_stmtContext):
-        pass
-
-
     # Enter a parse tree produced by sqlParser#insert_stmt.
     def enterInsert_stmt(self, ctx:sqlParser.Insert_stmtContext):
         pass
@@ -221,24 +212,6 @@ class sqlListener(ParseTreeListener):
 
     # Exit a parse tree produced by sqlParser#simple_select_stmt.
     def exitSimple_select_stmt(self, ctx:sqlParser.Simple_select_stmtContext):
-        pass
-
-
-    # Enter a parse tree produced by sqlParser#select_stmt.
-    def enterSelect_stmt(self, ctx:sqlParser.Select_stmtContext):
-        pass
-
-    # Exit a parse tree produced by sqlParser#select_stmt.
-    def exitSelect_stmt(self, ctx:sqlParser.Select_stmtContext):
-        pass
-
-
-    # Enter a parse tree produced by sqlParser#select_or_values.
-    def enterSelect_or_values(self, ctx:sqlParser.Select_or_valuesContext):
-        pass
-
-    # Exit a parse tree produced by sqlParser#select_or_values.
-    def exitSelect_or_values(self, ctx:sqlParser.Select_or_valuesContext):
         pass
 
 

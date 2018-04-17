@@ -31,7 +31,6 @@ sql_stmt
       | show_columns_stmt
       | begin_stmt
       | commit_stmt
-      | compound_select_stmt
       | create_index_stmt
       | delete_stmt
       | drop_index_stmt
@@ -40,7 +39,6 @@ sql_stmt
       | insert_stmt
       | rollback_stmt
       | simple_select_stmt
-      | select_stmt
       | update_stmt )
  ;
 
@@ -90,8 +88,12 @@ commit_stmt
  : K_COMMIT ( K_TRANSACTION transaction_name? )?
  ;
 
-compound_select_stmt
- : select_core ( ( K_UNION | K_INTERSECT | K_EXCEPT ) select_core )+
+/**
+ * Esto agrupa posibles SELECT statements unidos por operaciones de conjuntos: 
+ * UNION, INTERSECT, EXCEPT
+ */
+factored_select_stmt
+ : select_core ( compound_operator select_core )*
    ( K_ORDER K_BY ordering_term ( ',' ordering_term )* )?
    ( K_LIMIT expr ( ( K_OFFSET | ',' ) expr )? )?
  ;
@@ -104,9 +106,7 @@ create_index_stmt
 create_table_stmt
  : K_CREATE K_TABLE
    table_name
-   ( '(' column_def ( ',' column_def )* ( ',' table_constraint )* ')'
-   | K_AS select_stmt
-   )
+   '(' column_def ( ',' column_def )* ( ',' table_constraint )* ')'
  ;
 
 delete_stmt
@@ -122,12 +122,6 @@ drop_table_stmt
  : K_DROP K_TABLE table_name
  ;
 
-factored_select_stmt
- : select_core ( compound_operator select_core )*
-   ( K_ORDER K_BY ordering_term ( ',' ordering_term )* )?
-   ( K_LIMIT expr ( ( K_OFFSET | ',' ) expr )? )?
- ;
-
 insert_stmt
  : K_INSERT K_INTO
    table_name ( '(' column_name ( ',' column_name )* ')' )?
@@ -141,20 +135,6 @@ rollback_stmt
 simple_select_stmt
  : select_core ( K_ORDER K_BY ordering_term ( ',' ordering_term )* )?
    ( K_LIMIT expr ( ( K_OFFSET | ',' ) expr )? )?
- ;
-
-select_stmt
- : select_or_values ( compound_operator select_or_values )*
-   ( K_ORDER K_BY ordering_term ( ',' ordering_term )* )?
-   ( K_LIMIT expr ( ( K_OFFSET | ',' ) expr )? )?
- ;
-
-select_or_values
- : K_SELECT ( K_DISTINCT )? result_column ( ',' result_column )*
-   ( K_FROM ( table_or_subquery ( ',' table_or_subquery )* | join_clause ) )?
-   ( K_WHERE expr )?
-   ( K_GROUP K_BY expr ( ',' expr )* ( K_HAVING expr )? )?
- | K_VALUES '(' expr ( ',' expr )* ')' ( ',' '(' expr ( ',' expr )* ')' )*
  ;
 
 update_stmt
@@ -208,12 +188,12 @@ expr
  | expr K_NOT? ( K_LIKE ) expr
  | expr ( K_NOT K_NULL )
  | expr K_IS K_NOT? expr
- | expr K_NOT? K_IN ( '(' ( select_stmt
+ | expr K_NOT? K_IN ( '(' ( select_core
                           | expr ( ',' expr )*
-                          )? 
+                          )?
                       ')'
                     | table_name )
- | ( ( K_NOT )? K_EXISTS )? '(' select_stmt ')'
+ | ( ( K_NOT )? K_EXISTS )? '(' select_core ')'
  ;
 
 foreign_key_clause
@@ -233,7 +213,7 @@ ordering_term
  ;
 
 common_table_expression
- : table_name ( '(' column_name ( ',' column_name )* ')' )? K_AS '(' select_stmt ')'
+ : table_name ( '(' column_name ( ',' column_name )* ')' )? K_AS '(' select_core ')'
  ;
 
 result_column
@@ -247,7 +227,7 @@ table_or_subquery
  | '(' ( table_or_subquery ( ',' table_or_subquery )*
        | join_clause )
    ')' ( K_AS? table_alias )?
- | '(' select_stmt ')' ( K_AS? table_alias )?
+ | '(' select_core ')' ( K_AS? table_alias )?
  ;
 
 join_clause
@@ -265,7 +245,7 @@ join_constraint
 
 select_core
  : K_SELECT ( K_DISTINCT )? result_column ( ',' result_column )*
-   ( K_FROM ( table_or_subquery ( ',' table_or_subquery )* | join_clause ) )?
+   K_FROM ( table_or_subquery ( ',' table_or_subquery )* | join_clause )
    ( K_WHERE expr )?
    ( K_GROUP K_BY expr ( ',' expr )* ( K_HAVING expr )? )?
  | K_VALUES '(' expr ( ',' expr )* ')' ( ',' '(' expr ( ',' expr )* ')' )*
@@ -395,11 +375,11 @@ database_name
  : any_name
  ;
 
-table_name 
+table_name
  : any_name
  ;
 
-table_or_index_name 
+table_or_index_name
  : any_name
  ;
 
@@ -415,15 +395,15 @@ column_name
  : any_name
  ;
 
-collation_name 
+collation_name
  : any_name
  ;
 
-foreign_table 
+foreign_table
  : any_name
  ;
 
-index_name 
+index_name
  : any_name
  ;
 
@@ -431,15 +411,15 @@ trigger_name
  : any_name
  ;
 
-view_name 
+view_name
  : any_name
  ;
 
-module_name 
+module_name
  : any_name
  ;
 
-table_alias 
+table_alias
  : any_name
  ;
 
