@@ -31,8 +31,11 @@ Una vez instalado, es posible visualizar el parsing tree de un comando SQL con e
 ```
 cd sql-python3
 
-python pygrun.py sql parse --tree --parse "SELECT * FROM tabla_1;"
+python pygrun.py sql parse "SELECT * FROM tabla_1;"
 ```
+
+En donde `sql` denota el nombre de la gramática y `parse` denota la *producción*
+inicial.
 
 ## Referencias
 

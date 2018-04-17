@@ -105,13 +105,13 @@ if __name__ == '__main__':
     #                   )
     parser.add_option('-t', '--tree',
                       dest="tree",
-                      default=False,
+                      default=True,
                       action='store_true',
                       help='Print AST tree'
                       )
     parser.add_option('-g', '--gui',
                       dest="gui",
-                      default=False,
+                      default=True,
                       action='store_true',
                       help='show AST tree in GUI'
                       )
