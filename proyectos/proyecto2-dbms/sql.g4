@@ -6,6 +6,9 @@
  */
 grammar sql;
 
+/**
+ * Parser rules
+ */
 parse
  : ( sql_stmt_list | error )* EOF
  ;
@@ -434,32 +437,11 @@ any_name
  | '(' any_name ')'
  ;
 
-SCOL : ';';
-DOT : '.';
-OPEN_PAR : '(';
-CLOSE_PAR : ')';
-COMMA : ',';
-ASSIGN : '=';
-STAR : '*';
-PLUS : '+';
-MINUS : '-';
-TILDE : '~';
-PIPE2 : '||';
-DIV : '/';
-MOD : '%';
-LT2 : '<<';
-GT2 : '>>';
-AMP : '&';
-PIPE : '|';
-LT : '<';
-LT_EQ : '<=';
-GT : '>';
-GT_EQ : '>=';
-EQ : '==';
-NOT_EQ1 : '!=';
-NOT_EQ2 : '<>';
-
-// http://www.sqlite.org/lang_keywords.html
+/**
+ * Lexer rules
+ *
+ * http://www.sqlite.org/lang_keywords.html
+ */
 K_ADD : A D D;
 K_ALTER : A L T E R;
 K_AND : A N D;
