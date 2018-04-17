@@ -19,6 +19,21 @@ o Python 3:
 Los archivos tests.sql y false-tests.sql contienen queries que son correcta e incorrectamente
 procesados por las clases generadas, a manera de validación.
 
+## Generación de parsing trees
+
+La generación GUI de parsing trees puede realizarse a través del script `pygrun.py`.
+
+Esto requiere la instalación de PyQT4 para (linux)[https://stackoverflow.com/questions/17240254/how-to-install-pyqt-on-ubuntu-12-04-with-python-2-7]
+o (windows)[https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyqt4].
+
+Una vez instalado, es posible visualizar el parsing tree de un comando SQL con el siguiente comando:
+
+```
+cd sql-python3
+
+python pygrun.py sql parse --tree --parse "SELECT * FROM tabla_1;"
+```
+
 ## Referencias
 
 De acuerdo con [esto](https://tomassetti.me/parsing-in-python/#tools), los **visitors**
@@ -39,5 +54,3 @@ antlr4 -Dlanguage=Python2 MyGrammar.g4
 
 antlr4 -Dlanguage=Python3 MyGrammar.g4
 ```
-
-
