@@ -162,7 +162,6 @@ column_constraint
     SQLite understands the following binary operators, in order from highest to
     lowest precedence:
 
-    ||
     *    /    %
     +    -
     <<   >>   &    |
@@ -173,30 +172,23 @@ column_constraint
     NOT
 */
 expr
- : literal_value
- | BIND_PARAMETER
- | ( table_name '.' )? column_name
- | unary_operator expr
- | expr '||' expr
- | expr ( '*' | '/' | '%' ) expr
- | expr ( '+' | '-' ) expr
- | expr ( '<<' | '>>' | '&' | '|' ) expr
- | expr ( '<' | '<=' | '>' | '>=' ) expr
- | expr ( '=' | '==' | '!=' | '<>' | K_IS | K_IS K_NOT | K_IN | K_LIKE | K_MATCH ) expr
- | expr K_AND expr
- | expr K_OR expr
- | function_name '(' ( K_DISTINCT? expr ( ',' expr )* | '*' )? ')'
- | K_NOT expr
- | '(' expr ')'
- | expr K_NOT? ( K_LIKE ) expr
- | expr ( K_NOT K_NULL )
- | expr K_IS K_NOT? expr
- | expr K_NOT? K_IN ( '(' ( select_core
-                          | expr ( ',' expr )*
-                          )?
-                      ')'
-                    | table_name )
- | ( ( K_NOT )? K_EXISTS )? '(' select_core ')'
+ : literal_value                                                                # exprLiteralValue
+ | ( table_name '.' )? column_name                                              # exprTableColumn
+ | unary_operator expr                                                          # exprUnaryExpr
+ | expr ( '*' | '/' | '%' ) expr                                                # exprMul
+ | expr ( '+' | '-' ) expr                                                      # exprAdd
+ | expr ( '<' | '<=' | '>' | '>=' ) expr                                        # exprComparisonFirst
+ | expr ( '=' | '==' | '!=' | '<>' | K_IS | K_IS K_NOT | K_IN | K_LIKE | K_MATCH ) expr     # exprComparisonSecond
+ | expr K_AND expr                                                              # exprAnd
+ | expr K_OR expr                                                               # exprOr
+ | function_name '(' ( K_DISTINCT? expr ( ',' expr )* | '*' )? ')'              # exprFunction
+ | K_NOT expr                                                                   # exprNot
+ | '(' expr ')'                                                                 # exprParenthesis
+ | expr K_NOT? ( K_LIKE ) expr                                                  # exprLike
+ | expr ( K_NOT K_NULL )                                                        # exprNotNull
+ | expr K_IS K_NOT? expr                                                        # exprIsNot
+ | expr K_NOT? K_IN ( '(' ( select_core | expr ( ',' expr )* )? ')' | table_name ) # exprNotIn
+ | ( ( K_NOT )? K_EXISTS )? '(' select_core ')'                                 # exprNotExists
  ;
 
 foreign_key_clause
@@ -220,9 +212,9 @@ common_table_expression
  ;
 
 result_column
- : '*'
- | table_name '.' '*'
- | expr ( K_AS? column_alias )?
+ : '*'                              # resultColumnAsterisk
+ | table_name '.' '*'               # resultColumnTableAsterisk
+ | expr ( K_AS? column_alias )?     # resultColumnExpr
  ;
 
 table_or_subquery
@@ -251,7 +243,6 @@ select_core
    ( K_FROM ( table_or_subquery ( ',' table_or_subquery )* | join_clause ) )?
    ( K_WHERE expr )?
    ( K_GROUP K_BY expr ( ',' expr )* ( K_HAVING expr )? )?
- | K_VALUES '(' expr ( ',' expr )* ')' ( ',' '(' expr ( ',' expr )* ')' )*
  ;
 
 compound_operator
@@ -522,11 +513,6 @@ IDENTIFIER
 NUMERIC_LITERAL
  : DIGIT+ ( '.' DIGIT* )? ( E [-+]? DIGIT+ )?
  | '.' DIGIT+ ( E [-+]? DIGIT+ )?
- ;
-
-BIND_PARAMETER
- : '?' DIGIT*
- | [:@$] IDENTIFIER
  ;
 
 STRING_LITERAL

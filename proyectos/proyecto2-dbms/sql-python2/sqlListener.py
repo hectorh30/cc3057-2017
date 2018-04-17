@@ -247,12 +247,156 @@ class sqlListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by sqlParser#expr.
-    def enterExpr(self, ctx):
+    # Enter a parse tree produced by sqlParser#exprFunction.
+    def enterExprFunction(self, ctx):
         pass
 
-    # Exit a parse tree produced by sqlParser#expr.
-    def exitExpr(self, ctx):
+    # Exit a parse tree produced by sqlParser#exprFunction.
+    def exitExprFunction(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprNot.
+    def enterExprNot(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprNot.
+    def exitExprNot(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprLiteralValue.
+    def enterExprLiteralValue(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprLiteralValue.
+    def exitExprLiteralValue(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprComparisonSecond.
+    def enterExprComparisonSecond(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprComparisonSecond.
+    def exitExprComparisonSecond(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprLike.
+    def enterExprLike(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprLike.
+    def exitExprLike(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprNotExists.
+    def enterExprNotExists(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprNotExists.
+    def exitExprNotExists(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprUnaryExpr.
+    def enterExprUnaryExpr(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprUnaryExpr.
+    def exitExprUnaryExpr(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprNotIn.
+    def enterExprNotIn(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprNotIn.
+    def exitExprNotIn(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprNotNull.
+    def enterExprNotNull(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprNotNull.
+    def exitExprNotNull(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprTableColumn.
+    def enterExprTableColumn(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprTableColumn.
+    def exitExprTableColumn(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprComparisonFirst.
+    def enterExprComparisonFirst(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprComparisonFirst.
+    def exitExprComparisonFirst(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprOr.
+    def enterExprOr(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprOr.
+    def exitExprOr(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprMul.
+    def enterExprMul(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprMul.
+    def exitExprMul(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprAdd.
+    def enterExprAdd(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprAdd.
+    def exitExprAdd(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprAnd.
+    def enterExprAnd(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprAnd.
+    def exitExprAnd(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprParenthesis.
+    def enterExprParenthesis(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprParenthesis.
+    def exitExprParenthesis(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprIsNot.
+    def enterExprIsNot(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprIsNot.
+    def exitExprIsNot(self, ctx):
         pass
 
 
@@ -292,12 +436,30 @@ class sqlListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by sqlParser#result_column.
-    def enterResult_column(self, ctx):
+    # Enter a parse tree produced by sqlParser#resultColumnAsterisk.
+    def enterResultColumnAsterisk(self, ctx):
         pass
 
-    # Exit a parse tree produced by sqlParser#result_column.
-    def exitResult_column(self, ctx):
+    # Exit a parse tree produced by sqlParser#resultColumnAsterisk.
+    def exitResultColumnAsterisk(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#resultColumnTableAsterisk.
+    def enterResultColumnTableAsterisk(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#resultColumnTableAsterisk.
+    def exitResultColumnTableAsterisk(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#resultColumnExpr.
+    def enterResultColumnExpr(self, ctx):
+        pass
+
+    # Exit a parse tree produced by sqlParser#resultColumnExpr.
+    def exitResultColumnExpr(self, ctx):
         pass
 
 

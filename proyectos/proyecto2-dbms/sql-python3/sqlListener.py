@@ -251,12 +251,156 @@ class sqlListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by sqlParser#expr.
-    def enterExpr(self, ctx:sqlParser.ExprContext):
+    # Enter a parse tree produced by sqlParser#exprFunction.
+    def enterExprFunction(self, ctx:sqlParser.ExprFunctionContext):
         pass
 
-    # Exit a parse tree produced by sqlParser#expr.
-    def exitExpr(self, ctx:sqlParser.ExprContext):
+    # Exit a parse tree produced by sqlParser#exprFunction.
+    def exitExprFunction(self, ctx:sqlParser.ExprFunctionContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprNot.
+    def enterExprNot(self, ctx:sqlParser.ExprNotContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprNot.
+    def exitExprNot(self, ctx:sqlParser.ExprNotContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprLiteralValue.
+    def enterExprLiteralValue(self, ctx:sqlParser.ExprLiteralValueContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprLiteralValue.
+    def exitExprLiteralValue(self, ctx:sqlParser.ExprLiteralValueContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprComparisonSecond.
+    def enterExprComparisonSecond(self, ctx:sqlParser.ExprComparisonSecondContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprComparisonSecond.
+    def exitExprComparisonSecond(self, ctx:sqlParser.ExprComparisonSecondContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprLike.
+    def enterExprLike(self, ctx:sqlParser.ExprLikeContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprLike.
+    def exitExprLike(self, ctx:sqlParser.ExprLikeContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprNotExists.
+    def enterExprNotExists(self, ctx:sqlParser.ExprNotExistsContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprNotExists.
+    def exitExprNotExists(self, ctx:sqlParser.ExprNotExistsContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprUnaryExpr.
+    def enterExprUnaryExpr(self, ctx:sqlParser.ExprUnaryExprContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprUnaryExpr.
+    def exitExprUnaryExpr(self, ctx:sqlParser.ExprUnaryExprContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprNotIn.
+    def enterExprNotIn(self, ctx:sqlParser.ExprNotInContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprNotIn.
+    def exitExprNotIn(self, ctx:sqlParser.ExprNotInContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprNotNull.
+    def enterExprNotNull(self, ctx:sqlParser.ExprNotNullContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprNotNull.
+    def exitExprNotNull(self, ctx:sqlParser.ExprNotNullContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprTableColumn.
+    def enterExprTableColumn(self, ctx:sqlParser.ExprTableColumnContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprTableColumn.
+    def exitExprTableColumn(self, ctx:sqlParser.ExprTableColumnContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprComparisonFirst.
+    def enterExprComparisonFirst(self, ctx:sqlParser.ExprComparisonFirstContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprComparisonFirst.
+    def exitExprComparisonFirst(self, ctx:sqlParser.ExprComparisonFirstContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprOr.
+    def enterExprOr(self, ctx:sqlParser.ExprOrContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprOr.
+    def exitExprOr(self, ctx:sqlParser.ExprOrContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprMul.
+    def enterExprMul(self, ctx:sqlParser.ExprMulContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprMul.
+    def exitExprMul(self, ctx:sqlParser.ExprMulContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprAdd.
+    def enterExprAdd(self, ctx:sqlParser.ExprAddContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprAdd.
+    def exitExprAdd(self, ctx:sqlParser.ExprAddContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprAnd.
+    def enterExprAnd(self, ctx:sqlParser.ExprAndContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprAnd.
+    def exitExprAnd(self, ctx:sqlParser.ExprAndContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprParenthesis.
+    def enterExprParenthesis(self, ctx:sqlParser.ExprParenthesisContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprParenthesis.
+    def exitExprParenthesis(self, ctx:sqlParser.ExprParenthesisContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#exprIsNot.
+    def enterExprIsNot(self, ctx:sqlParser.ExprIsNotContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#exprIsNot.
+    def exitExprIsNot(self, ctx:sqlParser.ExprIsNotContext):
         pass
 
 
@@ -296,12 +440,30 @@ class sqlListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by sqlParser#result_column.
-    def enterResult_column(self, ctx:sqlParser.Result_columnContext):
+    # Enter a parse tree produced by sqlParser#resultColumnAsterisk.
+    def enterResultColumnAsterisk(self, ctx:sqlParser.ResultColumnAsteriskContext):
         pass
 
-    # Exit a parse tree produced by sqlParser#result_column.
-    def exitResult_column(self, ctx:sqlParser.Result_columnContext):
+    # Exit a parse tree produced by sqlParser#resultColumnAsterisk.
+    def exitResultColumnAsterisk(self, ctx:sqlParser.ResultColumnAsteriskContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#resultColumnTableAsterisk.
+    def enterResultColumnTableAsterisk(self, ctx:sqlParser.ResultColumnTableAsteriskContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#resultColumnTableAsterisk.
+    def exitResultColumnTableAsterisk(self, ctx:sqlParser.ResultColumnTableAsteriskContext):
+        pass
+
+
+    # Enter a parse tree produced by sqlParser#resultColumnExpr.
+    def enterResultColumnExpr(self, ctx:sqlParser.ResultColumnExprContext):
+        pass
+
+    # Exit a parse tree produced by sqlParser#resultColumnExpr.
+    def exitResultColumnExpr(self, ctx:sqlParser.ResultColumnExprContext):
         pass
 
 
