@@ -150,8 +150,7 @@ column_def
  ;
 
 type_name
- : name+ ( '(' signed_number ')'
-         | '(' signed_number ',' signed_number ')' )?
+ : name ( '(' signed_number ')' )?
  ;
 
 column_constraint
@@ -196,7 +195,7 @@ foreign_key_clause
  ;
 
 table_constraint
- : K_CONSTRAINT name
+ : K_CONSTRAINT (name)?
    ( ( K_PRIMARY K_KEY | K_UNIQUE ) '(' column_name ( ',' column_name )* ')'
    | K_CHECK '(' expr ')'
    | K_FOREIGN K_KEY '(' column_name ( ',' column_name )* ')' foreign_key_clause
