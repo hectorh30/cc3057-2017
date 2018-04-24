@@ -71,12 +71,15 @@ use_database_stmt
 
 alter_table_stmt
  : K_ALTER K_TABLE table_name
-   ( K_RENAME K_TO new_table_name
-    | K_ADD K_COLUMN column_def
-    | K_ADD table_constraint
-    | K_DROP K_COLUMN column_name
-    | K_DROP K_CONSTRAINT name
-   )
+   alter_table_specific_stmt
+ ;
+
+alter_table_specific_stmt
+ : K_RENAME K_TO new_table_name             # alterRenameTo
+  | K_ADD K_COLUMN column_def               # alterAddColumn
+  | K_ADD table_constraint                  # alterAddConstraint
+  | K_DROP K_COLUMN column_name             # alterDropColumn
+  | K_DROP K_CONSTRAINT name                # alterDropConstraint
  ;
 
 show_columns_stmt
@@ -92,7 +95,7 @@ commit_stmt
  ;
 
 /**
- * Esto agrupa posibles SELECT statements unidos por operaciones de conjuntos: 
+ * Esto agrupa posibles SELECT statements unidos por operaciones de conjuntos:
  * UNION, INTERSECT, EXCEPT
  */
 factored_select_stmt

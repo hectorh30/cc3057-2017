@@ -60,6 +60,31 @@ class sqlVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by sqlParser#alterRenameTo.
+    def visitAlterRenameTo(self, ctx):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by sqlParser#alterAddColumn.
+    def visitAlterAddColumn(self, ctx):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by sqlParser#alterAddConstraint.
+    def visitAlterAddConstraint(self, ctx):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by sqlParser#alterDropColumn.
+    def visitAlterDropColumn(self, ctx):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by sqlParser#alterDropConstraint.
+    def visitAlterDropConstraint(self, ctx):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by sqlParser#show_columns_stmt.
     def visitShow_columns_stmt(self, ctx):
         return self.visitChildren(ctx)
